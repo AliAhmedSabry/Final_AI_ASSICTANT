@@ -616,58 +616,30 @@ export default function Quizzes({ onNavigate, documentId }: { onNavigate: (p: st
             )}
         </AnimatePresence>
 
-        {/* --- PREMIUM PRINT TEMPLATE --- */}
+        {/* --- COMPACT EXAM PAPER --- */}
         <div style={{ position: 'absolute', top: '-9999px', left: '-9999px' }}>
-            <div ref={printRef} className="p-16 bg-white text-slate-900" style={{ width: '850px' }}>
-                <div className="mb-16 border-b-[8px] border-slate-950 pb-12">
-                    <div className="flex justify-between items-end mb-8">
-                        <div>
-                            <h1 className="text-5xl font-black italic uppercase tracking-tighter leading-none mb-2 text-slate-900">NEURAL<br/>QUIZ REPORT</h1>
-                            <p className="text-[10px] font-black uppercase tracking-[0.5em] text-indigo-600">Unit Verification Record</p>
-                        </div>
-                        <div className="text-right">
-                            <p className="text-[8px] font-black uppercase tracking-[0.3em] opacity-30 mb-1">UNIT EVALUATION</p>
-                            <p className="text-xl font-black italic uppercase tracking-tighter">{docTitle || 'Active Session'}</p>
-                        </div>
+            <div ref={printRef} className="bg-white text-slate-900 leading-tight" style={{ width: '800px', fontFamily: "'Georgia', serif", padding: '10px' }}>
+                <div className="mb-6 pb-2 border-b-2 border-slate-900 flex justify-between items-end">
+                    <h1 className="text-xl font-black uppercase tracking-tighter text-slate-950" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                        Neural Evaluation Record
+                    </h1>
+                    <div className="text-right">
+                        <p className="text-[7px] font-black uppercase tracking-widest text-slate-400">Node: {docTitle} // Success: {Math.round((score/questions.length)*100)}%</p>
                     </div>
                 </div>
 
-                <div className="mb-16 grid grid-cols-3 gap-6">
-                    <div className="p-8 bg-indigo-50/50 rounded-2xl text-center border border-indigo-100">
-                        <p className="text-[8px] font-black uppercase tracking-widest text-indigo-600 mb-2">Final Score</p>
-                        <p className="text-4xl font-black italic tracking-tighter text-indigo-700">{Math.round((score/questions.length)*100)}%</p>
-                    </div>
-                    <div className="p-8 bg-slate-50/50 rounded-2xl text-center border border-slate-100">
-                        <p className="text-[8px] font-black uppercase tracking-widest opacity-30 mb-2">Verified Nodes</p>
-                        <p className="text-4xl font-black italic tracking-tighter">{score}</p>
-                    </div>
-                    <div className="p-8 bg-slate-50/50 rounded-2xl text-center border border-slate-100">
-                        <p className="text-[8px] font-black uppercase tracking-widest opacity-30 mb-2">Total Samples</p>
-                        <p className="text-4xl font-black italic tracking-tighter">{questions.length}</p>
-                    </div>
-                </div>
-
-                <div className="space-y-10">
+                <div className="grid grid-cols-2 gap-x-12 gap-y-6">
                     {questions.map((q, i) => (
-                        <div key={i} className="p-10 rounded-2xl border border-slate-100 bg-white" style={{ breakInside: 'avoid' }}>
-                            <div className="flex items-center gap-4 mb-6 opacity-30">
-                                <span className="text-[8px] font-black uppercase tracking-[0.4em]">Examination Node 0{i+1}</span>
-                            </div>
-                            <h3 className="text-xl font-black italic uppercase tracking-tighter mb-8 leading-tight">{q.question}</h3>
-                            <div className="space-y-3">
-                                <div className="p-6 bg-green-50 border border-green-100 rounded-xl flex justify-between items-center">
-                                    <span className="text-base font-bold text-green-700">{q.answer}</span>
-                                    <span className="text-[8px] font-black text-green-600 uppercase tracking-widest">Verified Answer</span>
-                                </div>
-                            </div>
+                        <div key={i} className="text-[9px] border-b border-slate-50 pb-2" style={{ breakInside: 'avoid' }}>
+                            <p className="font-bold text-slate-900 mb-1">{i+1}. {q.question}</p>
+                            <p className="text-slate-500 italic">Answer: <span className="text-slate-900 font-bold">{q.answer}</span></p>
                         </div>
                     ))}
                 </div>
 
-                <footer className="mt-20 pt-8 border-t-2 border-slate-900 flex justify-between items-center opacity-40">
-                    <p className="text-[8px] font-black uppercase tracking-[0.4em]">NEURAL STUDY AI // MASTERY PROTOCOL V2.5</p>
-                    <p className="text-[8px] font-black uppercase tracking-[0.4em]">END OF ASSESSMENT</p>
-                </footer>
+                <div className="mt-8 pt-2 border-t border-slate-100 opacity-20 text-[6px] font-bold uppercase tracking-[0.5em] text-center">
+                    End of Evaluation // Unit: {user?.email}
+                </div>
             </div>
         </div>
         

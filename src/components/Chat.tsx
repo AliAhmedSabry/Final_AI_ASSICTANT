@@ -592,44 +592,34 @@ export default function Chat({ onNavigate, documentId }: { onNavigate: (p: strin
                 )}
             </AnimatePresence>
 
-            {/* --- PREMIUM PRINT TEMPLATE --- */}
+            {/* --- COMPACT SESSION LOG --- */}
             <div style={{ position: 'absolute', top: '-9999px', left: '-9999px' }}>
-                <div ref={printRef} className="p-16 bg-white text-slate-900" style={{ width: '850px' }}>
-                    <div className="mb-16 border-b-[8px] border-slate-950 pb-12">
-                        <div className="flex justify-between items-end mb-8">
-                            <div>
-                                <h1 className="text-5xl font-black italic uppercase tracking-tighter leading-none mb-2 text-slate-900">NEURAL<br/>SYNC LOG</h1>
-                                <p className="text-[10px] font-black uppercase tracking-[0.5em] text-blue-600">Confidential Transmission Record</p>
-                            </div>
-                            <div className="text-right">
-                                <p className="text-[8px] font-black uppercase tracking-[0.3em] opacity-30 mb-1">FRAGMENT ID</p>
-                                <p className="text-xl font-black italic uppercase tracking-tighter">{selectedDoc?.title || 'Active Session'}</p>
-                            </div>
-                        </div>
+                <div ref={printRef} className="bg-white text-slate-900 leading-tight" style={{ width: '800px', fontFamily: "'Georgia', serif", padding: '10px' }}>
+                    <div className="mb-6 pb-2 border-b-2 border-slate-900 flex justify-between items-center">
+                        <h1 className="text-xl font-black uppercase tracking-tighter text-slate-950" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                            Interactive Session Transcript
+                        </h1>
+                        <span className="text-[7px] font-bold uppercase tracking-widest text-slate-400">Node: {selectedDoc?.title} // {new Date().toLocaleDateString()}</span>
                     </div>
 
-                    <div className="space-y-12">
+                    <div className="space-y-4">
                         {messages.map((m, i) => (
-                            <div key={i} className={`p-10 rounded-2xl border ${
-                                m.role === 'user' ? 'bg-slate-50 border-slate-100' : 'bg-white border-blue-50 shadow-sm'
-                            }`} style={{ breakInside: 'avoid' }}>
-                                <div className="flex items-center gap-3 mb-4 opacity-30">
-                                    <div className={`w-2 h-2 rounded-full ${m.role === 'user' ? 'bg-slate-950' : 'bg-blue-600'}`} />
-                                    <span className="text-[8px] font-black uppercase tracking-[0.4em]">
-                                        {m.role === 'user' ? 'Source Transmission' : 'Core Processing Response'}
+                            <div key={i} className="text-[10px]" style={{ breakInside: 'avoid' }}>
+                                <div className="flex gap-2 mb-1">
+                                    <span className={`font-black uppercase tracking-widest ${m.role === 'user' ? 'text-slate-400' : 'text-blue-600'}`}>
+                                        [{m.role === 'user' ? 'USER' : 'CORE'}]
                                     </span>
-                                </div>
-                                <div className={`text-base leading-relaxed font-medium ${m.role === 'user' ? 'text-slate-600' : 'text-slate-900'}`}>
-                                    {m.content}
+                                    <div className={`leading-relaxed ${m.role === 'user' ? 'text-slate-600' : 'text-slate-900'}`}>
+                                        {m.content}
+                                    </div>
                                 </div>
                             </div>
                         ))}
                     </div>
 
-                    <footer className="mt-20 pt-8 border-t-2 border-slate-900 flex justify-between items-center opacity-40">
-                        <p className="text-[8px] font-black uppercase tracking-[0.4em]">NEURAL STUDY AI // SYNC PROTOCOL V2.5</p>
-                        <p className="text-[8px] font-black uppercase tracking-[0.4em]">END OF LOG</p>
-                    </footer>
+                    <div className="mt-8 pt-2 border-t border-slate-100 opacity-20 text-[6px] font-bold uppercase tracking-[0.5em] text-center">
+                        End of Transmission
+                    </div>
                 </div>
             </div>
         </div>

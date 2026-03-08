@@ -1,0 +1,55 @@
+========================================================
+   NEURAL STUDY AI // PROJECT OVERVIEW & PR LOG v2.5
+========================================================
+
+1. THE NEURAL CORE (AI ENGINE)
+--------------------------------------------------------
+* BRAIN: Upgraded to Llama-3.3-70b-Versatile for high-performance reasoning.
+* MULTIMODAL: Full support for text, documents (PDF/DOCX/TXT), and visual data.
+* NEURAL VOICE: Integrated TTS (Text-to-Speech) for auditory learning.
+* SIGN ASSIST: Revolutionary ASL (American Sign Language) output and Camera-based sign recognition for accessibility.
+
+2. ACADEMIC ECOSYSTEM
+--------------------------------------------------------
+* INTELLIGENT PLANNER: AI-generated 7-day optimized study grids based on user profiles.
+* NEURAL SUMMARIZER: Automated extraction pipeline converting documents into concise markdown summaries and study points.
+* VECTOR LIBRARY: Indexed document storage with real-time neural analysis.
+* MASTERY MAP: Visual roadmap tracking academic progress, specifically optimized for "1st Bakalorua" and beyond.
+
+3. EVALUATION & VERIFICATION
+--------------------------------------------------------
+* NEURAL QUIZ: Multi-format testing (MCQ, True/False, Short Answer).
+* AI VERIFICATION: Neural core analyzes short-form answers for conceptual accuracy.
+* RECALL ENGINE: Dynamic flashcard generation from document fragments.
+
+4. PSYCHOLOGICAL GAMIFICATION
+--------------------------------------------------------
+* XP & LEVELING: Mathematical progression system based on study intensity.
+* STREAK PROTOCOL: Daily study tracking with reward multipliers.
+* STAR SYSTEM: Premium currency awarded for academic mastery and achievements.
+* LEADERBOARD: Global ranking system by Stars or XP, featuring Levels and Streaks.
+* NEURAL GARDEN: A 3D interactive growth system (Three.js) where students "grow" their academic progress.
+* STORE & INVENTORY: Marketplace for UI themes, profile colors, and garden assets.
+
+5. SMART FOCUS ENGINE (POMODORO)
+--------------------------------------------------------
+* ENVIRONMENT SYNTHESIS: Dynamic themes (Sunset, Night, Library, Coffee Shop, Forest).
+* AMBIENT AUDIO: High-quality loopable soundscapes for each environment.
+* WEATHER EFFECTS: Particle-based rain/snow/wind systems.
+* SESSION LOGGING: Automatic tracking of study hours directly to the Supabase backend.
+
+6. SOCIAL & COLLABORATION
+--------------------------------------------------------
+* MESSENGER: End-to-end encrypted style communication within the platform.
+* SOCIAL HUB: User discovery and profile synchronization.
+
+7. PREMIUM INFRASTRUCTURE
+--------------------------------------------------------
+* SUPABASE BACKEND: Real-time database, auth, and custom PostgreSQL RPC functions.
+* PREMIUM PDF SYNTHESIS: Custom-built high-fidelity export engine for Chat, Quiz, Summaries, and Plans.
+* ADMIN COMMAND CENTER: Restricted dashboard for user management, star awarding, and system oversight.
+* SECURITY: Protected environment variables and encrypted export protocols.
+
+========================================================
+   END OF TRANSMISSION // NEURAL STUDY AI TEAM
+========================================================

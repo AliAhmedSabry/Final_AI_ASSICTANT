@@ -442,80 +442,68 @@ const NeuralSummary: React.FC<NeuralSummaryProps> = ({ onNavigate, documentId })
                                 </AnimatePresence>
                                 </div>
 
-            {/* --- PREMIUM PRINT TEMPLATE --- */}
+            {/* --- COMPACT ONE-PAGE TEMPLATE --- */}
             <div style={{ position: 'absolute', top: '-9999px', left: '-9999px' }}>
-                <div ref={printRef} className="p-16 bg-white text-slate-900" style={{ width: '850px' }}>
-                    <div className="mb-16 border-b-[8px] border-slate-900 pb-12">
-                        <div className="flex justify-between items-end mb-8">
-                            <div>
-                                <h1 className="text-5xl font-black italic uppercase tracking-tighter leading-none mb-2 text-slate-950">NEURAL<br/>INTELLIGENCE</h1>
-                                <p className="text-[10px] font-black uppercase tracking-[0.5em] text-amber-600">Cognitive Synthesis Report</p>
-                            </div>
-                            <div className="text-right">
-                                <p className="text-[8px] font-black uppercase tracking-[0.3em] opacity-30 mb-1">REFERENCE</p>
-                                <p className="text-xl font-black italic uppercase tracking-tighter">{summary?.title}</p>
-                            </div>
+                <div ref={printRef} className="bg-white text-slate-900 leading-tight" style={{ width: '800px', fontFamily: "'Georgia', serif", padding: '10px' }}>
+                    {/* Compact Header */}
+                    <div className="mb-8 pb-4 border-b-[4px] border-slate-900 flex justify-between items-end">
+                        <div>
+                            <h1 className="text-3xl font-black uppercase tracking-tighter text-slate-950" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                                Neural Analysis Report
+                            </h1>
+                            <p className="text-[8px] font-bold uppercase tracking-[0.4em] text-amber-600 italic">Subject: {summary?.title}</p>
+                        </div>
+                        <div className="text-right">
+                            <p className="text-[7px] font-bold uppercase tracking-widest text-slate-400">Unit: {user?.email}</p>
+                            <p className="text-[7px] font-bold uppercase tracking-widest text-slate-400">Epoch: {new Date().toLocaleDateString()}</p>
                         </div>
                     </div>
 
-                    <section className="mb-16" style={{ breakInside: 'avoid' }}>
-                        <div className="flex items-center gap-4 mb-8">
-                            <div className="w-12 h-12 bg-amber-500 rounded-lg flex items-center justify-center text-white text-xl font-black">I</div>
-                            <h2 className="text-3xl font-black uppercase italic tracking-tighter border-b-2 border-slate-100 flex-1 pb-2">Academic Synthesis</h2>
-                        </div>
-                        <div className="text-lg leading-relaxed font-medium whitespace-pre-wrap pl-8 border-l-4 border-amber-100 text-slate-800">
-                            {summary?.summary}
-                        </div>
-                    </section>
+                    <div className="space-y-8">
+                        {/* Summary Section - More Compact */}
+                        <section style={{ breakInside: 'avoid' }}>
+                            <h2 className="text-xs font-black uppercase tracking-[0.2em] mb-3 text-slate-950 border-l-4 border-amber-500 pl-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                                I. Synthesis
+                            </h2>
+                            <div className="text-[11px] leading-relaxed whitespace-pre-wrap text-slate-800 ml-4">
+                                {summary?.summary}
+                            </div>
+                        </section>
 
-                    <section className="mb-16" style={{ breakInside: 'avoid' }}>
-                        <div className="flex items-center gap-4 mb-10">
-                            <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center text-white text-xl font-black">II</div>
-                            <h2 className="text-3xl font-black uppercase italic tracking-tighter border-b-2 border-slate-100 flex-1 pb-2">Recall Validation</h2>
-                        </div>
-                        <div className="space-y-8 pl-8">
-                            {summary?.quiz?.map((q: any, i: number) => (
-                                <div key={i} className="p-8 bg-slate-50 rounded-2xl border border-slate-100" style={{ breakInside: 'avoid' }}>
-                                    <p className="text-lg font-black mb-4 leading-tight">{i+1}. {q.question}</p>
-                                    <div className="grid grid-cols-2 gap-4">
-                                        {q.options?.map((opt: string, oi: number) => (
-                                            <div key={oi} className={`p-4 border-2 rounded-xl text-xs font-black uppercase tracking-tight ${opt === q.answer ? 'bg-white border-green-500 text-green-700 shadow-sm' : 'bg-white border-slate-100 opacity-40'}`}>
-                                                {opt}
-                                            </div>
-                                        ))}
+                        {/* Quiz Section - 2 Column Grid to save space */}
+                        <section style={{ breakInside: 'avoid' }}>
+                            <h2 className="text-xs font-black uppercase tracking-[0.2em] mb-4 text-slate-950 border-l-4 border-blue-600 pl-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                                II. Verification Nodes
+                            </h2>
+                            <div className="grid grid-cols-2 gap-x-10 gap-y-4 ml-4">
+                                {summary?.quiz?.map((q: any, i: number) => (
+                                    <div key={i} className="text-[10px] border-b border-slate-50 pb-2" style={{ breakInside: 'avoid' }}>
+                                        <p className="font-bold text-slate-900 mb-1">{i+1}. {q.question}</p>
+                                        <p className="text-slate-500 italic font-medium">Answer: <span className="text-slate-900">{q.answer}</span></p>
                                     </div>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
+                                ))}
+                            </div>
+                        </section>
 
-                    <section className="mb-16" style={{ breakInside: 'avoid' }}>
-                        <div className="flex items-center gap-4 mb-10">
-                            <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center text-white text-xl font-black">III</div>
-                            <h2 className="text-3xl font-black uppercase italic tracking-tighter border-b-2 border-slate-100 flex-1 pb-2">Mastery Assessment</h2>
-                        </div>
-                        <div className="space-y-8 pl-8">
-                            {summary?.exam?.map((q: any, i: number) => (
-                                <div key={i} className="p-8 bg-slate-50 rounded-2xl border border-slate-100" style={{ breakInside: 'avoid' }}>
-                                    <p className="text-lg font-black mb-4 leading-tight">{i+1}. {q.question}</p>
-                                    {q.options && (
-                                        <div className="grid grid-cols-2 gap-4">
-                                            {q.options.map((opt: string, oi: number) => (
-                                                <div key={oi} className={`p-4 border-2 rounded-xl text-xs font-black uppercase tracking-tight ${opt === q.answer ? 'bg-white border-purple-500 text-purple-700 shadow-sm' : 'bg-white border-slate-100 opacity-40'}`}>
-                                                    {opt}
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    </section>
+                        {/* Exam Section - 2 Column Grid */}
+                        <section style={{ breakInside: 'avoid' }}>
+                            <h2 className="text-xs font-black uppercase tracking-[0.2em] mb-4 text-slate-950 border-l-4 border-purple-600 pl-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
+                                III. Mastery Assessment
+                            </h2>
+                            <div className="grid grid-cols-2 gap-x-10 gap-y-4 ml-4">
+                                {summary?.exam?.map((q: any, i: number) => (
+                                    <div key={i} className="text-[10px] border-b border-slate-50 pb-2" style={{ breakInside: 'avoid' }}>
+                                        <p className="font-bold text-slate-900 mb-1">{i+1}. {q.question}</p>
+                                        <p className="text-slate-500 italic font-medium">Answer: <span className="text-slate-900">{q.answer}</span></p>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+                    </div>
 
-                    <footer className="mt-20 pt-8 border-t-2 border-slate-900 flex justify-between items-center opacity-40">
-                        <p className="text-[8px] font-black uppercase tracking-[0.4em]">NEURAL STUDY AI // CORE PROTOCOL V2.5</p>
-                        <p className="text-[8px] font-black uppercase tracking-[0.4em]">END OF REPORT</p>
-                    </footer>
+                    <div className="mt-12 pt-4 border-t border-slate-100 opacity-20 text-[6px] font-bold uppercase tracking-[0.5em] text-center">
+                        End of Neural Transmission // Secure Protocol
+                    </div>
                 </div>
             </div>
             </div>
